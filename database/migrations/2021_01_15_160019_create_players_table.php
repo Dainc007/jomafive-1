@@ -19,8 +19,8 @@ class CreatePlayersTable extends Migration
             $table->string('surname');
             $table->integer('yearOfBirth')->numberBetween(1900, 2030)->nullable();
             $table->string('teamName');
-            $table->integer('teamID');
-            $table->boolean('confirmed')->default(1);
+            $table->integer('teamID')->nullable();
+            $table->boolean('confirmed')->default(0);
             $table->timestamps();
         });
     }

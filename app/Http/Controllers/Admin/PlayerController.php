@@ -29,12 +29,17 @@ class PlayerController extends Controller
 
     public function transferList()
     {
-        return view('teams.transferList');
+        return view('teams.transferList', [
+            'confirmedPlayers' => DB::table('players')->where('teamName' , 'TransferList')->where('confirmed', true)->get(),
+            'notConfirmedPlayers' => DB::table('players')->where('teamName' , 'TransferList')->where('confirmed', false)->get()
+        ]);
     }
 
     public function add(Request $request)
     {
         $player = Player::create($request->all());
+
+        return back()->with('success', 'All good!');
     
     }
 }

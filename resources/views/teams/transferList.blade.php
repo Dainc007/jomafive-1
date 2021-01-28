@@ -13,6 +13,7 @@
 
         <div class="col-lg-8 col-sm-12">
 
+
             <table class="table">
                 <thead>
                     <tr>
@@ -23,23 +24,15 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    @foreach($confirmedPlayers as $player)
                     <tr>
                         <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$player->name}}</td>
+                        <td>{{$player->surname}}</td>
+                        <td>{{$player->yearOfBirth}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -70,13 +63,32 @@
                     </div>
 
                     <input type="text" hidden name="teamName" id="teamName" value="transferList">
-                    <input type="number" hidden name="teamID" value="0">
 
                     <button type="submit" class="btn mb-2 btn-primary">Wpisz się na listę transferową</button>
                     @csrf
                 </form>
 
 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="table">
+                    @if(!empty($notConfirmedPlayers))
+
+                    @foreach($notConfirmedPlayers as $player)
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{$player->name}}</td>
+                        <td>{{$player->surname}}</td>
+                        <td>{{$player->yearOfBirth}}</td>
+                    </tr>
+                    @endforeach
+
+                    @endif
+
+                </div>
             </div>
         </div>
 
